@@ -14,9 +14,9 @@ It works out of the box with Chrome, Edge, and Firefox on Windows 10, and can be
 
 The following commands will launch the example tests with the individual browsers:
 
-    ./gradlew remoteFirefoxRemote
-    ./gradlew remoteChromeRemote
-    ./gradlew remoteEdgeRemote
+    ./gradlew remoteFirefoxTest
+    ./gradlew remoteChromeTest
+    ./gradlew remoteEdgeTest
 
 Test results will be available in your Browserstack Automate console and will include videos and detailed logs. JUnit test results are also generated for consumption by your test reporter of choice.
 
