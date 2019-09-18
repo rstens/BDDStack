@@ -33,3 +33,7 @@ Two environment variables ___MUST___ be supplied for the tests to execute. They 
 `BROWSERSTACK_USERNAME` and `BROWSERSTACK_TOKEN`.
 
 Optional configuration parameters are identified in `build.gradle` and `GebConfig.groovy` with the annotation `//@changeme`.
+
+## Getting Help
+
+Contact me on BCGov RocketChat @robert.johnstone
