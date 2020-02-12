@@ -15,7 +15,7 @@ ext {
 
   ext {
     //@changeme
-    reportProjectName = 'Personal Property Registry'
+    reportProjectName = 'BDDStack Project'
 
     groovyVersion = '2.5.9'
     gebVersion = '3.3'
