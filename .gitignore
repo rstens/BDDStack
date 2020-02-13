@@ -10,3 +10,6 @@ out
 .idea
 images
 examples
+.project
+.settings
+.vscode
