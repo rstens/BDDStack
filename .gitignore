@@ -1,5 +1,7 @@
 build
 .gradle
+.settings
+.vscode
 *.log
 .DS_Store
 *.ipr
@@ -11,5 +13,3 @@ out
 images
 examples
 .project
-.settings
-.vscode
