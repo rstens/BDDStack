@@ -1,55 +1,39 @@
-[![Releases](https://img.shields.io/github/release/bcdevops/bddstack.svg)](https://github.com/BCDevOps/BDDStack/releases/tag/1.1)
-
-# BDDStack
+# BDDStack - Browserstack Support Version
 
 ## Description
 
-This is an example of incorporating Geb into a Gradle build. It shows the use of Spock and JUnit 4 tests.
+This is an example of using Browserstack in conjunction with Geb/Spock tests as part of a gradle build.
 
-The build is setup to work with a variety of browsers and we aim to add as many as possible.
-A JenkinsSlave image has been created that can run Chrome/Firefox Headless tests. This offers a viable option for replacing phantomJs in the OpenShift pipeline. Please see the [JenkinsSlave Dockerfile][dockerfile] setup.
-This repository also holds a Dockerfile for a CentOS based image that will run headless tests as well.
-
-BDDStack is 100% compatible with the tests that were created in the previous incarnation of the framework called [NavUnit][navunit] (which is now deprecated). Please see the wiki for instructions on how to use your NavUnit Tests in BDDStack.
-
-Please see the [Wiki](https://github.com/BCDevOps/BDDStack/wiki) for more details.
-
+It works out of the box with Chrome, Edge, and Firefox on Windows 10, and can be readily configured to support many more
+ browsers (even mobile devices) by adjusting the configuration in `src/test/resources/GebConfig.groovy`.
+ 
+ It works equally well on Windows, Mac, and Linux hosts since tests run remotely, and it works well within an Openshift
+  or Jenkins pipeline.
+ 
 ## Usage
 
-The following commands will launch the tests with the individual browsers:
+The following commands will launch the example tests with the individual browsers:
 
-    ./gradlew chromeTest
-    ./gradlew chromeHeadlessTest //Will run in pipeline as well
-    ./gradlew firefoxTest
-    ./gradlew firefoxHeadlessTest //Will run in pipeline as well
-    ./gradlew edgeTest
-    ./gradlew ieTest //Read wiki for set up instructions
-    ./gradlew safariTest //Only for MacOS, read wiki for instructions.
-    
-To run with all, you can run:
+    ./gradlew remoteFirefoxTest
+    ./gradlew remoteChromeTest
+    ./gradlew remoteEdgeTest
 
-    ./gradlew test
+Test results will be available in your Browserstack Automate console and will include videos and detailed logs. JUnit test results are also generated for consumption by your test reporter of choice.
 
 Replace `./gradlew` with `gradlew.bat` in the above examples if you're on Windows.
 
-## Questions and issues
+## Adapting Tests
 
-Please ask questions on our [Slack Channel][slack_channel] and raise issues in [BDDStack issue tracker][issue_tracker].
+Your Geb specs must extend from the special base class in `listeners.BrowserStackReportingSpec`, a subclass of `GebSpec` that provides support for reporting status information via the Browserstack API.
 
-## Useful Links:
+## Configuration
 
-<http://www.gebish.org/manual/current>
+Two environment variables ___MUST___ be supplied for the tests to execute. They can be supplied via the `.env` file also.
 
-<http://spockframework.org/>
+`BROWSERSTACK_USERNAME` and `BROWSERSTACK_TOKEN`.
 
-<http://groovy-lang.org/>
+Optional configuration parameters are identified in `build.gradle` and `GebConfig.groovy` with the annotation `//@changeme`.
 
-<https://inviqa.com/blog/bdd-guide>
+## Getting Help
 
-<https://github.com/SeleniumHQ/selenium/wiki>
-
-
-[navunit]: https://github.com/bcgov/navUnit
-[dockerfile]: https://github.com/BCDevOps/openshift-tools/blob/master/provisioning/jenkins-slaves/bddstack/Dockerfile
-[issue_tracker]: https://github.com/rstens/BDDStack/issues
-[slack_channel]: https://devopspathfinder.slack.com/messages/C7J72K1MG
+Contact me on BCGov RocketChat @robert.johnstone

@@ -1,6 +1,6 @@
-import geb.spock.GebSpec
+import listeners.BrowserStackReportingSpec
 
-class GebishOrgSpec extends GebSpec {
+class GebishOrgSpec extends BrowserStackReportingSpec {
 
     def "can get to the current Book of Geb"() {
         when:
