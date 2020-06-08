@@ -5,13 +5,14 @@ plugins {
   id "groovy"
   id "com.energizedwork.webdriver-binaries" version "1.4"
   id "com.energizedwork.idea-base" version "1.4"
+  id "io.qameta.allure" version "2.8.1"
 }
 
 ext {
   // these names are arbitrary and can be changed or extended.
   // configuration is in resources/GebConfig.groovy
   // add them here and configure them there
-  drivers = ["remoteEdge", "remoteFirefox", "remoteChrome"]
+  drivers = ["remoteEdge", "remoteFirefox", "remoteChrome", "remoteAndroid"]
 
   ext {
     //@changeme
@@ -124,4 +125,19 @@ sourceSets {
       srcDirs = ["src/test/resources"]
     }
   }
+}
+
+allure {
+    version = '2.8.1'
+    aspectjweaver = true
+    autoconfigure = true
+    
+    resultsDir = file('allure-results')
+    reportDir = file('allure-reports')
+    
+    useSpock {
+       version = '2.0-BETA10'
+    }
+    
+    downloadLink = 'https://dl.bintray.com/qameta/generic/io/qameta/allure/allure/2.8.1/allure-2.8.1.zip'
 }

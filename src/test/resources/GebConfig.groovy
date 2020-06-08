@@ -95,6 +95,27 @@ environments {
 			return driver
 		}
 	}
+
+	remoteAndroid {
+		driver = {
+			DesiredCapabilities caps = new DesiredCapabilities();
+			caps.setCapability("os_version", "10.0");
+			caps.setCapability("device", "Google Pixel 3");
+			caps.setCapability("real_mobile", "true");
+			caps.setCapability("project", "Demo");
+			caps.setCapability("build", "Build1");
+			caps.setCapability("name", "GebDemo");
+			caps.setCapability("browserstack.local", "false");
+			caps.setCapability("browserstack.networkLogs", "true");
+
+			String URL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub"
+
+			driver = new RemoteWebDriver(new URL(URL), caps)
+
+			return driver
+		}
+	}
+
 }
 
 // To run the tests with all browsers just run “./gradlew test”
